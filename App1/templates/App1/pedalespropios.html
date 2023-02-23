@@ -1,0 +1,38 @@
+{% extends "App1/padre.html" %}
+
+
+{% load static %}
+
+{% block titulo %}
+<p style="text-align: center;"> Estos son los modelos que tenemos en Stock Actualmente
+{% endblock %}
+
+{%block texto%}
+{% for pedal in modelopropio %}
+
+<p style="color:darkred; text-align: center; font-size:200%"> Modelo: {{pedal.modelo}}
+                                <hr>
+                               <p style="color: blue; text-align: center; font-size:150%; "> Efecto:  {{pedal.efecto}}
+                                <hr>
+                               <p style="text-align: justify;" strong> Reseña: {{pedal.descripcion}}
+                                <hr>
+                                Precio: {{pedal.precio}}
+                                <hr>
+                                En Stock: {{pedal.unidades}}
+
+                        <button>
+
+                            <a href="{% url 'Eliminar_stockpropio' pedal.modelo %}"> Eliminar Stock</a>
+                                                        
+                        </button>
+
+                        <button>
+                            <a href="{% url 'Editar_stockpropio' pedal.modelo %}"> Editar Stock</a>
+                        </button>
+                                                                    
+        
+{% endfor %}
+
+{% endblock %}
+
+
